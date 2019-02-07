@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/vortex/option.xsd">
+	<import>
+		<categories>
+			<category name="shop.general.membershipReminder">
+				<parent>shop.general</parent>
+			</category>
+		</categories>
+		
+		<options>
+			<option name="shop_membership_reminder_remind_days_before">
+				<categoryname>shop.general.membershipReminder</categoryname>
+				<optiontype>integer</optiontype>
+				<suffix>days</suffix>
+				<defaultvalue>7</defaultvalue>
+				<minvalue>1</minvalue>
+				<maxvalue>14</maxvalue>
+			</option>
+			<option name="shop_membership_reminder_title">
+				<categoryname>shop.general.membershipReminder</categoryname>
+				<optiontype>textI18n</optiontype>
+				<supporti18n>1</supporti18n>
+				<defaultvalue>wcf.acp.option.shop_membership_reminder_title.default</defaultvalue>
+			</option>
+			<option name="shop_membership_reminder_text">
+				<categoryname>shop.general.membershipReminder</categoryname>
+				<optiontype>textareaI18n</optiontype>
+				<supporti18n>1</supporti18n>
+				<defaultvalue>wcf.acp.option.shop_membership_reminder_text.default</defaultvalue>
+			</option>
+		</options>
+	</import>
+</data>

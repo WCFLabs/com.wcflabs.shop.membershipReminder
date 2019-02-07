@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/language.xsd" languagecode="en">
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.shop.general.membershipReminder"><![CDATA[Membership Reminder]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_remind_days_before"><![CDATA[Reminder Period]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_remind_days_before.description"><![CDATA[The number of days before the user is reminded.]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_title"><![CDATA[Conversation Title]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_title.default"><![CDATA[Your membership is about to expire!]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_text"><![CDATA[Conversation Message]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_text.description"><![CDATA[The message that is sent to the user by conversation when the membership is about to expire. The message must be created in HTML. The wildcards <kbd>{literal}{$username}{/literal}</kbd> and <kbd>{literal}{$validTo}{/literal}</kbd> can be used.]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_text.default"><![CDATA[<p>Hello {$username},</p>
+<p><br></p>
+<p>Your membership is about to expire (Valid to: {$validTo}).</p>]]></item>
+	</category>
+</language>

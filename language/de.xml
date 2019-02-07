@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/language.xsd" languagecode="de">
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.shop.general.membershipReminder"><![CDATA[Mitgliedschaft Erinnerung]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_remind_days_before"><![CDATA[Erinnerungszeitraum]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_remind_days_before.description"><![CDATA[Die Anzahl der Tage, bevor der Benutzer erinnert werden soll.]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_title"><![CDATA[Konversations Titel]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_title.default"><![CDATA[Ihre Mitgliedschaft läuft in Kürze aus!]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_text"><![CDATA[Konversations Nachricht]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_text.description"><![CDATA[Die Nachricht, die dem Benutzer bei Ablauf der Mitgliedschaft per Konversation zugeschickt wird. Die Nachricht muss als HTML-Nachricht verfasst werden. Es können die Platzhalten <kbd>{literal}{$username}{/literal}</kbd> und <kbd>{literal}{$validTo}{/literal}</kbd> verwendet werden.]]></item>
+		<item name="wcf.acp.option.shop_membership_reminder_text.default"><![CDATA[<p>Hallo {$username},</p>
+<p><br></p>
+<p>Ihre Mitgliedschaft läuft in Kürze aus (Vorteile aktiv bis zum {$validTo}).</p>]]></item>
+	</category>
+</language>
