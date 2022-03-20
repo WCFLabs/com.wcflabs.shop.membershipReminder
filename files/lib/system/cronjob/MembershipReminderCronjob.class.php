@@ -1,5 +1,7 @@
 <?php
+
 namespace shop\system\cronjob;
+
 use shop\data\membership\Membership;
 use shop\data\membership\MembershipAction;
 use shop\data\membership\MembershipList;
@@ -15,39 +17,41 @@ use wcf\util\StringUtil;
  * Remind members about expiring memberships.
  *
  * @author	Joshua Ruesweg
- * @copyright	2016-2019 WCFLabs.de
+ * @copyright	2016-2022 WCFLabs.de
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  */
-class MembershipReminderCronjob extends AbstractCronjob {
+class MembershipReminderCronjob extends AbstractCronjob
+{
 	/**
 	 * @inheritDoc
 	 */
-	public function execute(Cronjob $cronjob) {
+	public function execute(Cronjob $cronjob)
+	{
 		parent::execute($cronjob);
-		
+
 		if (empty(SHOP_MEMBERSHIP_REMINDER_TEXT) || empty(SHOP_MEMBERSHIP_REMINDER_TITLE)) return;
-		
+
 		$membershipList = new MembershipList();
 		$membershipList->getConditionBuilder()->add('isActive = ?', [1]);
-		$membershipList->getConditionBuilder()->add('validTo < ?', [strtotime('+'. SHOP_MEMBERSHIP_REMINDER_REMIND_DAYS_BEFORE .' days', TIME_NOW)]);
+		$membershipList->getConditionBuilder()->add('validTo < ?', [strtotime('+' . SHOP_MEMBERSHIP_REMINDER_REMIND_DAYS_BEFORE . ' days', TIME_NOW)]);
 		$membershipList->getConditionBuilder()->add('remindedToDate < validTo');
 		$membershipList->readObjects();
-		
+
 		try {
 			WCF::getDB()->beginTransaction();
-			
+
 			/** @var Membership $membership */
 			foreach ($membershipList as $membership) {
 				UserProfileRuntimeCache::getInstance()->cacheObjectID($membership->userID);
 			}
-			
+
 			/** @var Membership $membership */
 			foreach ($membershipList as $membership) {
 				$userProfile = UserProfileRuntimeCache::getInstance()->getObject($membership->userID);
-				
+
 				(new ConversationAction([], 'create', [
 					'data' => [
-						'userID' => null, 
+						'userID' => null,
 						'username' => 'System',
 						'time' => TIME_NOW,
 						'subject' => $userProfile->getLanguage()->get(SHOP_MEMBERSHIP_REMINDER_TITLE),
@@ -66,7 +70,7 @@ class MembershipReminderCronjob extends AbstractCronjob {
 						], $userProfile->getLanguage()->get(SHOP_MEMBERSHIP_REMINDER_TEXT))
 					]
 				]))->executeAction();
-				
+
 				$membershipAction = new MembershipAction($membershipList->getObjects(), 'update', [
 					'data' => [
 						'remindedToDate' => $membership->validTo
@@ -74,12 +78,11 @@ class MembershipReminderCronjob extends AbstractCronjob {
 				]);
 				$membershipAction->executeAction();
 			}
-			
+
 			WCF::getDB()->commitTransaction();
-		}
-		catch (\Exception $e) {
+		} catch (\Exception $e) {
 			WCF::getDB()->rollBackTransaction();
-			
+
 			throw $e;
 		}
 	}
