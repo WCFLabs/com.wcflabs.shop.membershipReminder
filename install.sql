@@ -1,1 +1,0 @@
-ALTER TABLE shop1_membership ADD COLUMN remindedToDate INT(10) DEFAULT '0';

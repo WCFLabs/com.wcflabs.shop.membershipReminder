@@ -27,9 +27,9 @@
 
 	<instructions type="install">
 		<instruction type="file" application="shop" />
+		<instruction type="database" application="shop">acp/database/install_com.wcflabs.shop.membershipReminder.php</instruction>
 		<instruction type="cronjob" />
 		<instruction type="option" />
-		<instruction type="sql" />
 		<instruction type="language" />
 	</instructions>
 </package>
