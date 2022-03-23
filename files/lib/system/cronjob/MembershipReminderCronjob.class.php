@@ -33,7 +33,7 @@ class MembershipReminderCronjob extends AbstractCronjob
 
 		$membershipList = new MembershipList();
 		$membershipList->getConditionBuilder()->add('isDisabled = ?', [0]);
-		$membershipList->getConditionBuilder()->add('validTo < ?', [strtotime('+' . SHOP_MEMBERSHIP_REMINDER_REMIND_DAYS_BEFORE . ' days', TIME_NOW)]);
+		$membershipList->getConditionBuilder()->add('validTo < ?', [TIME_NOW + (86400 * SHOP_MEMBERSHIP_REMINDER_REMIND_DAYS_BEFORE)]);
 		$membershipList->getConditionBuilder()->add('remindedToDate < validTo');
 		$membershipList->readObjects();
 
