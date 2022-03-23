@@ -18,7 +18,7 @@ use wcf\util\StringUtil;
  *
  * @author	Joshua Ruesweg
  * @copyright	2016-2022 WCFLabs.de
- * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
+ * @license	GNU GENERAL PUBLIC LICENSE <https://www.gnu.org/licenses/gpl-3.0.txt>
  */
 class MembershipReminderCronjob extends AbstractCronjob
 {
